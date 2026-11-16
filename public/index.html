@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ClassVox</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <h1>ClassVox</h1>
+        <p>Sign in to post or upvote. Students use their roll number to vote once per question. Teachers can mark questions resolved.</p>
+      </header>
+
+      <section id="login-card" class="card" aria-labelledby="login-title">
+        <h2 id="login-title">Login</h2>
+        <form id="login-form">
+          <label for="username">Username</label>
+          <input id="username" name="username" autocomplete="username" required>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+          <label for="student-id">Student roll number (students only)</label>
+          <input id="student-id" name="studentId" autocomplete="off">
+          <button type="submit">Login</button>
+        </form>
+        <p id="login-message" role="status"></p>
+      </section>
+
+      <div id="account-bar" class="account-bar" hidden>
+        <p id="account-role"></p>
+        <button id="logout-button" class="secondary" type="button">Log out</button>
+      </div>
+
+      <section id="ask-card" class="card" aria-labelledby="ask-title" hidden>
+        <h2 id="ask-title">Ask a question</h2>
+        <form id="question-form">
+          <label for="question-body">Your question</label>
+          <textarea id="question-body" name="body" rows="3" required></textarea>
+          <button type="submit">Post question</button>
+        </form>
+        <p id="message" role="status"></p>
+      </section>
+
+      <section aria-labelledby="feed-title">
+        <h2 id="feed-title">Active questions</h2>
+        <div id="questions-list"></div>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
