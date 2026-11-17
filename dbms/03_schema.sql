@@ -1,5 +1,6 @@
 -- CP2: ClassVox tables in PostgreSQL's public schema.
--- This matches prisma/schema.prisma and the existing Prisma migration.
+-- Equivalent to prisma/schema.prisma and the existing Prisma migrations,
+-- extended with a status CHECK constraint.
 -- Shared student/teacher credentials are environment-based; auth adds no database table.
 
 CREATE TABLE "Question" (
@@ -7,7 +8,8 @@ CREATE TABLE "Question" (
     "body" TEXT NOT NULL,
     "status" TEXT NOT NULL DEFAULT 'APPROVED',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" TIMESTAMP(3) NOT NULL
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    CONSTRAINT "Question_status_check" CHECK ("status" IN ('APPROVED', 'RESOLVED'))
 );
 
 CREATE TABLE "Upvote" (

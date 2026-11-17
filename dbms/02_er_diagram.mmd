@@ -1,21 +1,17 @@
 erDiagram
-    %% Shared credentials are in .env; student voterId values use STUDENT:<roll number>.
-    %% Teacher voterId is TEACHER. Roll numbers are not verified against a class list.
-    %% Upvote.questionId references Question.id with ON DELETE CASCADE.
-    %% @@unique([questionId, voterId]); nullable voterId preserves older anonymous votes.
-    QUESTION ||--o{ UPVOTE : receives
-
-    QUESTION {
-        int id PK
-        string body
-        string status "default APPROVED"
-        datetime createdAt "default now"
-        datetime updatedAt "Prisma-managed"
+    Question {
+        integer id PK
+        text body
+        text status "APPROVED | RESOLVED"
+        timestamp createdAt
+        timestamp updatedAt
     }
-
-    UPVOTE {
-        int id PK
-        int questionId FK
-        string voterId "nullable; unique with questionId"
-        datetime createdAt "default now"
+    Upvote {
+        integer id PK
+        integer questionId FK
+        text voterId "nullable"
+        timestamp createdAt
     }
+    Question ||--o{ Upvote : "receives (ON DELETE CASCADE)"
+
+%% Note: shared role credentials live in .env; there is no User table.
