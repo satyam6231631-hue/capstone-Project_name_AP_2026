@@ -1,0 +1,49 @@
+ClassVox query plan on current schema: R2
+
+Run 1
+SQL:
+SELECT id FROM "Question" WHERE id = 2 AND status = 'APPROVED'
+Plan:
+QUERY PLAN
+-------------------------------------------------------------------------------------------------------
+ Seq Scan on "Question"  (cost=0.00..1.31 rows=1 width=4) (actual time=0.002..0.002 rows=1.00 loops=1)
+   Filter: ((id = 2) AND (status = 'APPROVED'::text))
+   Rows Removed by Filter: 20
+   Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=11
+ Planning Time: 0.017 ms
+ Execution Time: 0.004 ms
+(8 rows)
+
+Run 2
+SQL:
+SELECT id FROM "Question" WHERE id = 2 AND status = 'APPROVED'
+Plan:
+QUERY PLAN
+-------------------------------------------------------------------------------------------------------
+ Seq Scan on "Question"  (cost=0.00..1.31 rows=1 width=4) (actual time=0.002..0.002 rows=1.00 loops=1)
+   Filter: ((id = 2) AND (status = 'APPROVED'::text))
+   Rows Removed by Filter: 20
+   Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=11
+ Planning Time: 0.017 ms
+ Execution Time: 0.004 ms
+(8 rows)
+
+Run 3
+SQL:
+SELECT id FROM "Question" WHERE id = 2 AND status = 'APPROVED'
+Plan:
+QUERY PLAN
+-------------------------------------------------------------------------------------------------------
+ Seq Scan on "Question"  (cost=0.00..1.31 rows=1 width=4) (actual time=0.002..0.002 rows=1.00 loops=1)
+   Filter: ((id = 2) AND (status = 'APPROVED'::text))
+   Rows Removed by Filter: 20
+   Buffers: shared hit=1
+ Planning:
+   Buffers: shared hit=11
+ Planning Time: 0.016 ms
+ Execution Time: 0.004 ms
+(8 rows)
