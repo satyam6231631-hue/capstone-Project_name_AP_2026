@@ -1,0 +1,49 @@
+ClassVox query plan on current schema: W1
+
+Run 1
+SQL:
+INSERT INTO "Question" (body, status, "createdAt", "updatedAt")
+VALUES ('AP timing sample question', 'APPROVED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+RETURNING id, body, status, "createdAt", "updatedAt"
+Plan:
+QUERY PLAN
+------------------------------------------------------------------------------------------------------
+ Insert on "Question"  (cost=0.00..0.03 rows=1 width=84) (actual time=0.021..0.022 rows=1.00 loops=1)
+   Buffers: shared hit=16 dirtied=1
+   ->  Result  (cost=0.00..0.03 rows=1 width=84) (actual time=0.014..0.014 rows=1.00 loops=1)
+         Buffers: shared hit=14 dirtied=1
+ Planning Time: 0.005 ms
+ Execution Time: 0.025 ms
+(6 rows)
+
+Run 2
+SQL:
+INSERT INTO "Question" (body, status, "createdAt", "updatedAt")
+VALUES ('AP timing sample question', 'APPROVED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+RETURNING id, body, status, "createdAt", "updatedAt"
+Plan:
+QUERY PLAN
+------------------------------------------------------------------------------------------------------
+ Insert on "Question"  (cost=0.00..0.03 rows=1 width=84) (actual time=0.015..0.016 rows=1.00 loops=1)
+   Buffers: shared hit=16
+   ->  Result  (cost=0.00..0.03 rows=1 width=84) (actual time=0.009..0.009 rows=1.00 loops=1)
+         Buffers: shared hit=14
+ Planning Time: 0.005 ms
+ Execution Time: 0.019 ms
+(6 rows)
+
+Run 3
+SQL:
+INSERT INTO "Question" (body, status, "createdAt", "updatedAt")
+VALUES ('AP timing sample question', 'APPROVED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+RETURNING id, body, status, "createdAt", "updatedAt"
+Plan:
+QUERY PLAN
+------------------------------------------------------------------------------------------------------
+ Insert on "Question"  (cost=0.00..0.03 rows=1 width=84) (actual time=0.014..0.014 rows=1.00 loops=1)
+   Buffers: shared hit=16
+   ->  Result  (cost=0.00..0.03 rows=1 width=84) (actual time=0.008..0.008 rows=1.00 loops=1)
+         Buffers: shared hit=14
+ Planning Time: 0.004 ms
+ Execution Time: 0.017 ms
+(6 rows)
